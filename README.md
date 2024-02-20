@@ -1,1 +1,2 @@
 # tickerproject
+# Eyal, Aaryan, Vishnu
