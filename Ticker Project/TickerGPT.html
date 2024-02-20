@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TickerGPT</title>
+    <link rel="stylesheet" type="text/css" href="TickerGPT.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">$TickerGPT</h1>
+        <form id="tickerForm">
+            <input type="text" id="tickerInput" class="input-box" placeholder="Enter stock ticker e.g. TMUS" required>
+            <button type="submit">GO</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+
+    <script>
+        document.getElementById('tickerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var ticker = document.getElementById('tickerInput').value;
+
+            
+            fetch('/get_data', {
+                method: 'POST',
+                body: new URLSearchParams({ 'ticker': ticker }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                var resultDiv = document.getElementById('result');
+                if (data.error) {
+                    resultDiv.textContent = data.error;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p>Current Price: ${data['Current Price']}</p>
+                        <p>Bulls Say: ${data['Bulls Say']}</p>
+                        <p>Bull Price Target: ${data['Bull Price Target']}</p>
+                        <p>Bears Say: ${data['Bears Say']}</p>
+                        <p>Bear Price Target: ${data['Bear Price Target']}</p>
+                        <p>Final Price Target: ${data['Final Price Target']}</p>
+                        <p>Recommendation: ${data['Recommendation']}</p>
+                    `;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
