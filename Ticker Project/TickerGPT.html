@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TickerGPT</title>
+    <link rel="stylesheet" type="text/css" href="TickerGPT.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">$TickerGPT</h1>
+        <form id="tickerForm">
+            <input type="text" id="tickerInput" class="input-box" placeholder="Enter stock ticker e.g. TMUS" required>
+            <button type="submit">GO</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div id="summaryOutput"></div>  
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var submission = document.getElementById('submit');
+            document.getElementById('submit').addEventListener('click', function(){
+                var inputText = document.getElementById('tickerInput').value;
+                fetch('http://localhost:5000/TickerGPT', {
+                    method: 'POST',
+                    // Set the request headers to specify JSON content
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: inputText }),
+                })
+                .then(response => response.json())
+                // Handle the parsed JSON data
+                .then(data => {
+                    document.getElementById('summaryOutput').textContent = data.finalPrice;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>  
+</body>
+</html>
+
