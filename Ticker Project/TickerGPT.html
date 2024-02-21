@@ -21,40 +21,30 @@
     <div class="wave"></div>
     <div class="wave"></div>
     <div class="wave"></div>
+    <div id="summaryOutput"></div>  
 
     <script>
-        document.getElementById('tickerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var ticker = document.getElementById('tickerInput').value;
-
-            
-            fetch('/get_data', {
-                method: 'POST',
-                body: new URLSearchParams({ 'ticker': ticker }),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-                var resultDiv = document.getElementById('result');
-                if (data.error) {
-                    resultDiv.textContent = data.error;
-                } else {
-                    resultDiv.innerHTML = `
-                        <p>Current Price: ${data['Current Price']}</p>
-                        <p>Bulls Say: ${data['Bulls Say']}</p>
-                        <p>Bull Price Target: ${data['Bull Price Target']}</p>
-                        <p>Bears Say: ${data['Bears Say']}</p>
-                        <p>Bear Price Target: ${data['Bear Price Target']}</p>
-                        <p>Final Price Target: ${data['Final Price Target']}</p>
-                        <p>Recommendation: ${data['Recommendation']}</p>
-                    `;
-                }
-            })
-            .catch(error => console.error('Error:', error));
+        document.addEventListener('DOMContentLoaded', function(){
+            var submission = document.getElementById('submit');
+            document.getElementById('submit').addEventListener('click', function(){
+                var inputText = document.getElementById('tickerInput').value;
+                fetch('http://localhost:5000/TickerGPT', {
+                    method: 'POST',
+                    // Set the request headers to specify JSON content
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: inputText }),
+                })
+                .then(response => response.json())
+                // Handle the parsed JSON data
+                .then(data => {
+                    document.getElementById('summaryOutput').textContent = data.finalPrice;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
         });
-    </script>
+    </script>  
 </body>
 </html>
+
