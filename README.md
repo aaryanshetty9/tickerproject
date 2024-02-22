@@ -1,3 +1,3 @@
 # tickerproject
 # Eyal, Aaryan, Vishnu
-failing in creating a full stack stock predictor website
+working on full stack stock predictor website backed by ML Models
