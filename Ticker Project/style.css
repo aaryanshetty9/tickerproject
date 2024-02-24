@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: green;
+    padding: 10px;
+}
+
+.logo {
+    height: 50px; /* Adjust based on your logo's size */
+    margin-right: 20px;
+}
+
+.search-container {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.search-container input[type="text"] {
+    width: 50%; /* Adjust based on your preference */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.content {
+    background-color: #f0f0f0; /* Light grey background */
+    /* For a very light brown you can use something like #f5f5dc */
+    padding: 20px;
+    min-height: 90vh; /* Adjust based on your content */
+}

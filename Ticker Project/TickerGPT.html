@@ -14,7 +14,7 @@
         <h1 class="title">$TickerGPT</h1>
         <form id="tickerForm">
             <input type="text" id="tickerInput" class="input-box" placeholder="Enter stock ticker e.g. TMUS" required>
-            <button type="submit" id="submit">GO</button>
+            <a href="Second.html"><button type="submit" id="submit">GO</button></a>
         </form>
         <div id="result"></div>
     </div>
@@ -40,28 +40,6 @@
             });
         });
     </script>
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            event.preventDefault();
-            document.getElementById('submit').addEventListener('click', function(){
-                var inputText = document.getElementById('tickerInput').value;
-                fetch('http://localhost:5000/TickerGPT', {
-                    method: 'POST',
-                    // Set the request headers to specify JSON content
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ text: inputText }),
-                })
-                .then(response => response.json())
-                // Handle the parsed JSON data
-                .then(data => {
-                    document.getElementById('summaryOutput').textContent = data.returnSentence;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            });
-        });
-    </script>  -->
 </body>
 </html>
 
