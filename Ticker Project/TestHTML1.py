@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 @app.route('/TickerGPT', methods=['POST'])
-def TickerGPT():
+def TickerGPeT():
     data = request.json  # Get JSON data from the request
     ticker = data['ticker'].upper()  # Extract ticker and convert to uppercase
     print("Processing:", ticker)

@@ -4,3 +4,4 @@ pip install yfinance
 pip install openai
 pip install praw
 pip install pandas
+pip install vaderSentiment

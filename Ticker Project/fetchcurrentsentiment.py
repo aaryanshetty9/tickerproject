@@ -1,0 +1,1 @@
+#This module will focus on fetching the current time-series data + sentiment of the inputted ticker
