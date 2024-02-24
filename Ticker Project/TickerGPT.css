@@ -138,3 +138,10 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0ed40e; 
 }
+
+#summaryOutput{
+    flex: inherit;
+    text-align: center;
+    text-wrap: pretty;
+    padding-left: 2%;
+}
