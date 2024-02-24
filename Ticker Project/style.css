@@ -11,18 +11,25 @@ body {
     padding: 10px;
 }
 
+.Overview{
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10em;
+}
 .logo {
     height: 50px; /* Adjust based on your logo's size */
     margin-right: 20px;
 }
 
 .search-container {
-    flex-grow: 1;
+    flex-grow: 0.75;
     text-align: center;
 }
 
 .search-container input[type="text"] {
-    width: 50%; /* Adjust based on your preference */
+    width: 20%; /* Adjust based on your preference */
     padding: 10px;
     border: none;
     border-radius: 5px;
