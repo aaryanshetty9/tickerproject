@@ -4,17 +4,17 @@ body, h1, input {
 }
 
 body {
-    margin: auto;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    overflow: auto;
-    background: linear-gradient(315deg, rgb(0, 118, 18) 3%, rgb(55, 162, 73) 38%, rgb(5, 237, 1) 68%, rgb(14, 63, 23) 98%);
-    animation: gradient 15s ease infinite;
-    background-size: 400% 400%;
-    background-attachment: fixed;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background: linear-gradient(315deg, rgb(221, 255, 0) 3%, rgb(189, 32, 87) 38%, rgb(20, 167, 211) 68%, rgb(15, 208, 50) 98%);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes gradient {
